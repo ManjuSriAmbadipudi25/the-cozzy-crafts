@@ -215,6 +215,7 @@ export default function AdminPanel({
   const handleAddCategorySubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!catName) return;
+    console.log("Category saving...");
 
     const slug = catName.toLowerCase().replace(/[^a-z0-9]+/g, '-');
     const newCat: Category = {
