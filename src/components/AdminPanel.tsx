@@ -909,8 +909,8 @@ export default function AdminPanel({
 
               <button
                 type="submit"
-                
-              >className="mt-2 bg-cozzy-cocoa hover:bg-cozzy-taupe text-[#fff] text-xs font-bold tracking-wider py-3.5 rounded-xl uppercase relative z-50 cursor-pointer"
+                className="mt-2 bg-cozzy-cocoa hover:bg-cozzy-taupe text-[#fff] text-xs font-bold tracking-wider py-3.5 rounded-xl uppercase relative z-50 cursor-pointer"
+              >
                 Save Category
               </button>
 
