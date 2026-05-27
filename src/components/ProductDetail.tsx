@@ -166,7 +166,7 @@ export default function ProductDetail({
           {/* Pricing */}
           <div className="border-y border-cozzy-beige/20 py-4 flex items-center justify-between">
             <span className="text-2xl sm:text-3xl font-serif font-bold text-cozzy-cocoa">
-              ${product.price.toFixed(2)}
+              ₹{product.price.toFixed(2)}
             </span>
             <span className={`text-xs uppercase font-extrabold px-3 py-1 rounded-lg ${
               product.stock > 0 ? 'bg-emerald-50 text-emerald-700 border border-emerald-100' : 'bg-red-50 text-red-700 border border-red-100'
@@ -211,7 +211,7 @@ export default function ProductDetail({
                 className="flex-grow bg-cozzy-cocoa hover:bg-cozzy-taupe text-[#fff] text-xs font-bold tracking-wider uppercase py-4 rounded-2xl transition-all shadow-md hover:shadow-cozzy-rose hover:-translate-y-0.5 flex items-center justify-center gap-2"
               >
                 <ShoppingBag className="w-4 h-4" />
-                Add {quantity} to Bag • ${(product.price * quantity).toFixed(2)}
+                Add {quantity} to Bag • ₹{(product.price * quantity).toFixed(2)}
               </button>
 
             </div>
@@ -356,7 +356,7 @@ export default function ProductDetail({
                 </div>
                 <h4 className="font-serif text-sm font-semibold text-cozzy-cocoa truncate">{p.name}</h4>
                 <div className="flex justify-between items-center mt-2">
-                  <span className="text-cozzy-cocoa font-semibold text-sm">${p.price.toFixed(2)}</span>
+                  <span className="text-cozzy-cocoa font-semibold text-sm">₹{p.price.toFixed(2)}</span>
                   <span className="text-[10px] text-cozzy-taupe tracking-wider font-semibold uppercase">{p.category.replace('-', ' ')}</span>
                 </div>
               </div>

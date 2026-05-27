@@ -263,7 +263,7 @@ export default function Checkout({
             disabled={isSubmitting}
             className="bg-cozzy-cocoa hover:bg-cozzy-taupe text-[#fff] text-xs font-bold tracking-wider uppercase py-4 rounded-xl transition-all shadow-md hover:shadow-cozzy-rose flex items-center justify-center gap-2 cursor-pointer border border-transparent disabled:opacity-50"
           >
-            {isSubmitting ? 'Verifying with artisan ledger...' : `Place Handmade Order • $${grandTotal.toFixed(2)}`}
+            {isSubmitting ? 'Verifying with artisan ledger...' : `Place Handmade Order • ₹₹{grandTotal.toFixed(2)}`}
           </button>
 
         </form>
@@ -280,7 +280,7 @@ export default function Checkout({
                 <img src={item.product.images[0]} alt={item.product.name} referrerPolicy="no-referrer" className="w-10 h-10 object-cover rounded-lg border" />
                 <div className="flex-grow min-w-0">
                   <h4 className="font-serif font-medium text-cozzy-cocoa truncate">{item.product.name}</h4>
-                  <p className="text-[10px] text-cozzy-taupe/75">Qty: {item.quantity} • ${(item.product.price * item.quantity).toFixed(2)}</p>
+                  <p className="text-[10px] text-cozzy-taupe/75">Qty: {item.quantity} • ₹{(item.product.price * item.quantity).toFixed(2)}</p>
                 </div>
               </div>
             ))}
@@ -289,14 +289,14 @@ export default function Checkout({
           <div className="flex flex-col gap-2 py-2 border-b border-cozzy-beige/25 text-xs text-cozzy-taupe">
             <div className="flex justify-between">
               <span>Subtotal</span>
-              <span className="font-semibold text-cozzy-cocoa">${subtotal.toFixed(2)}</span>
+              <span className="font-semibold text-cozzy-cocoa">₹{subtotal.toFixed(2)}</span>
             </div>
             <div className="flex justify-between">
               <span>Shipping</span>
               {shipping === 0 ? (
                 <span className="text-emerald-600 font-bold uppercase text-[9px] bg-emerald-50 px-2 py-0.5 rounded-full">Free</span>
               ) : (
-                <span className="font-semibold text-cozzy-cocoa">${shipping.toFixed(2)}</span>
+                <span className="font-semibold text-cozzy-cocoa">₹{shipping.toFixed(2)}</span>
               )}
             </div>
           </div>
@@ -304,7 +304,7 @@ export default function Checkout({
           <div className="flex justify-between items-baseline pt-2">
             <span className="text-xs font-bold text-cozzy-cocoa uppercase tracking-wide">Total due</span>
             <span className="text-lg font-serif font-bold text-cozzy-cocoa">
-              ${grandTotal.toFixed(2)}
+              ₹{grandTotal.toFixed(2)}
             </span>
           </div>
         </div>

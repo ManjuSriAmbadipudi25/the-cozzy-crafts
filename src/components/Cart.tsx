@@ -133,10 +133,10 @@ export default function Cart({
 
                     <div className="text-right">
                       <span className="text-[10px] text-cozzy-taupe/70 block">
-                        ${item.product.price.toFixed(2)} each
+                        ₹{item.product.price.toFixed(2)} each
                       </span>
                       <span className="text-xs sm:text-sm font-serif font-semibold text-cozzy-cocoa">
-                        ${(item.product.price * item.quantity).toFixed(2)}
+                        ₹{(item.product.price * item.quantity).toFixed(2)}
                       </span>
                     </div>
 
@@ -167,19 +167,19 @@ export default function Cart({
             <div className="flex flex-col gap-3 py-4 border-y border-cozzy-beige/20 text-xs sm:text-sm text-cozzy-taupe">
               <div className="flex justify-between">
                 <span>Subtotal</span>
-                <span className="font-semibold text-cozzy-cocoa">${subtotal.toFixed(2)}</span>
+                <span className="font-semibold text-cozzy-cocoa">₹{subtotal.toFixed(2)}</span>
               </div>
               <div className="flex justify-between items-center">
                 <span>Shipping</span>
                 {shipping === 0 ? (
                   <span className="text-emerald-600 font-bold uppercase text-[10px] bg-emerald-50 px-2 py-0.5 rounded-full border border-emerald-100">Free Shipping</span>
                 ) : (
-                  <span className="font-semibold text-cozzy-cocoa">${shipping.toFixed(2)}</span>
+                  <span className="font-semibold text-cozzy-cocoa">₹{shipping.toFixed(2)}</span>
                 )}
               </div>
               {shipping > 0 && (
                 <p className="text-[10px] text-cozzy-taupe/80 italic mt-0.5">
-                  Spend ${(150 - subtotal).toFixed(2)} more to qualify for Free Shipping!
+                  Spend ₹{(150 - subtotal).toFixed(2)} more to qualify for Free Shipping!
                 </p>
               )}
             </div>
@@ -187,7 +187,7 @@ export default function Cart({
             <div className="flex justify-between py-2 items-baseline">
               <span className="text-sm font-serif font-bold text-cozzy-cocoa">Total Amount</span>
               <span className="text-xl font-serif font-extrabold text-cozzy-cocoa">
-                ${grandTotal.toFixed(2)}
+                ₹{grandTotal.toFixed(2)}
               </span>
             </div>
 

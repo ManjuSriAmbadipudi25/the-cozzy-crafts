@@ -402,7 +402,7 @@ export default function AdminPanel({
                           <td className="py-3 text-center">
                             <span className="font-extrabold bg-red-50 text-red-600 px-2 py-0.5 rounded text-[10px]">{p.stock} units</span>
                           </td>
-                          <td className="py-3 text-right font-medium">${p.price.toFixed(2)}</td>
+                          <td className="py-3 text-right font-medium">₹{p.price.toFixed(2)}</td>
                         </tr>
                       ))}
                     </tbody>
@@ -478,7 +478,7 @@ export default function AdminPanel({
               {/* Price & Stock */}
               <div className="grid grid-cols-2 gap-4">
                 <div className="flex flex-col gap-1">
-                  <label className="font-bold text-cozzy-cocoa uppercase">Price ($ USD) *</label>
+                  <label className="font-bold text-cozzy-cocoa uppercase">Price (₹ INR) *</label>
                   <input
                     type="number"
                     value={prodFormPrice || ''}
@@ -825,7 +825,7 @@ export default function AdminPanel({
                     <div className="min-w-0">
                       <h4 className="text-xs sm:text-sm font-serif font-bold text-cozzy-cocoa truncate">{p.name}</h4>
                       <p className="text-[10px] text-cozzy-taupe uppercase tracking-wider font-semibold">
-                        {p.category.replace('-', ' ')} • <span className="text-cozzy-cocoa">${p.price.toFixed(2)}</span> • stock: {p.stock}
+                        {p.category.replace('-', ' ')} • <span className="text-cozzy-cocoa">₹{p.price.toFixed(2)}</span> • stock: {p.stock}
                       </p>
                     </div>
                   </div>
@@ -1124,12 +1124,12 @@ export default function AdminPanel({
                         {order.items.map((item, idx) => (
                           <div key={idx} className="flex justify-between items-center text-cozzy-cocoa">
                             <span className="line-clamp-1">{item.name} (x{item.quantity})</span>
-                            <span className="font-bold">${(item.price * item.quantity).toFixed(2)}</span>
+                            <span className="font-bold">₹{(item.price * item.quantity).toFixed(2)}</span>
                           </div>
                         ))}
                         <div className="border-t border-cozzy-beige/30 pt-1 mt-1 font-bold flex justify-between items-center text-cozzy-cocoa text-[11px]">
                           <span>Grand Total</span>
-                          <span>${order.totalAmount.toFixed(2)}</span>
+                          <span>₹{order.totalAmount.toFixed(2)}</span>
                         </div>
                       </div>
                     </div>
