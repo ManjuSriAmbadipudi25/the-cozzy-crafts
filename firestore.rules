@@ -1,0 +1,71 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // 1. Global Catch-All Deny
+    match /{document=**} {
+      allow read, write: if false;
+    }
+
+    // --- Core Helper Functions ---
+    
+    // Validate custom database IDs to prevent injection
+    function isValidId(id) {
+      return id is string && id.size() <= 128 && id.matches('^[a-zA-Z0-9_\\-]+$');
+    }
+
+    // Check if the user is authenticated
+    function isSignedIn() {
+      return request.auth != null;
+    }
+
+    // Admin validation checks both metadata collections and the bootstrapped email
+    function isAdmin() {
+      return isSignedIn() && (
+        request.auth.token.email == "cozzyspace1@gmail.com" ||
+        exists(/databases/$(database)/documents/admins/$(request.auth.uid))
+      );
+    }
+
+    // --- Collection Security Rules ---
+
+    // Products collection: Anyone can read, only admin can create/update/delete
+    match /products/{productId} {
+      allow read: if true;
+      allow write: if isAdmin() && isValidId(productId);
+    }
+
+    // Categories collection: Anyone can read, only admin can write
+    match /categories/{categoryId} {
+      allow read: if true;
+      allow write: if isAdmin() && isValidId(categoryId);
+    }
+
+    // Banners collection: Anyone can read, only admin can write
+    match /banners/{bannerId} {
+      allow read: if true;
+      allow write: if isAdmin() && isValidId(bannerId);
+    }
+
+    // Orders collection: Anyone can create an order (for guests or users), admin can view all,
+    // users can view/read their own orders if authenticated and matched by email.
+    match /orders/{orderId} {
+      allow create: if isValidId(orderId);
+      allow read: if isAdmin() || (isSignedIn() && resource.data.customerEmail == request.auth.token.email);
+      allow update, delete: if isAdmin();
+    }
+
+    // Reviews collection: Anyone can read, signed-in users can create reviews, only admin can delete/edit them
+    match /reviews/{reviewId} {
+      allow read: if true;
+      allow create: if isSignedIn() && isValidId(reviewId) && request.resource.data.userName is string;
+      allow update, delete: if isAdmin();
+    }
+
+    // Admins collection: Admins check
+    match /admins/{adminId} {
+      allow read: if isSignedIn() && request.auth.uid == adminId;
+      allow write: if isAdmin();
+    }
+  }
+}
