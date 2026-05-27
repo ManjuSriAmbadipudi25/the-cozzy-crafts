@@ -742,7 +742,11 @@ export default function App() {
         )}
 
         {/* TAB SWITCHING: DESIGNING THE POWER PANEL DECK */}
-        {!authLoading && activeTab === 'admin' && currentUser?.email === 'cozzyspace1@gmail.com' && (
+        {!authLoading &&
+activeTab === 'admin' &&
+currentUser &&
+currentUser.email &&
+currentUser.email.toLowerCase() === 'cozzyspace1@gmail.com'.toLowerCase() && (
           <div className="flex flex-col gap-6 animate-soft-fade-in" id="authorized-admin-layout">
             
             {/* Elegant luxury top controller status bar containing User Details and Logout */}
