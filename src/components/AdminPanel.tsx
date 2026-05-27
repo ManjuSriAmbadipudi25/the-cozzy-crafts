@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { 
   Plus, Trash2, Edit, Save, Sliders, ClipboardList, TrendingUp, Sparkles, Image as ImageIcon,
-  FolderOpen, Layers, X, DollarSign, Package, Check, RefreshCw, Eye
+  FolderOpen, Layers, X, IndianRupee, Package, Check, RefreshCw, Eye
 } from 'lucide-react';
 import { Product, Category, Banner, Order } from '../types';
 
@@ -326,11 +326,11 @@ export default function AdminPanel({
             <div className="bg-white p-5 rounded-2xl border border-cozzy-beige/25 shadow-2xs flex items-center justify-between">
               <div>
                 <span className="text-[10px] text-cozzy-taupe uppercase tracking-wider font-semibold">Total Revenue</span>
-                <p className="text-2xl font-serif font-extrabold text-cozzy-cocoa mt-1">${totalSales.toFixed(2)}</p>
+                <p className="text-2xl font-serif font-extrabold text-cozzy-cocoa mt-1">₹{new Intl.NumberFormat('en-IN').format(totalSales)}</p>
                 <span className="text-[9px] text-emerald-600 font-bold bg-emerald-50 px-2 py-0.5 rounded mt-2 inline-block">100% genuine</span>
               </div>
               <div className="p-3 bg-cozzy-pink rounded-xl text-cozzy-taupe">
-                <DollarSign className="w-5 h-5" />
+                <IndianRupee className="w-5 h-5" />
               </div>
             </div>
 
